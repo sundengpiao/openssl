@@ -199,7 +199,9 @@ extern "C" {
  * DEPRECATED IN 3.0.0, in favor of OSSL_default_ciphersuites()
  * Update both macro and function simultaneously
  */
-#  define TLS_DEFAULT_CIPHERSUITES "TLS_AES_256_GCM_SHA384:" \
+#  define TLS_DEFAULT_CIPHERSUITES "SM2-SM4-CCM-SM3:"\
+                                   "TLS_SM4_CCM_SM3:"\
+                                   "TLS_AES_256_GCM_SHA384:" \
                                    "TLS_CHACHA20_POLY1305_SHA256:" \
                                    "TLS_AES_128_GCM_SHA256"
 # endif

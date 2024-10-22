@@ -1,0 +1,39 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "build",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "-O0",
+                "${file}",
+                "-lstdc++",
+                //"-std=c11",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-I${workspaceFolder}/include",
+                //"-I/root/git_repositories/OpenSSL-Compatibility-Layer/include",
+                "-L${workspaceFolder}",
+                //"-L/root/git_repositories/OpenSSL-Compatibility-Layer/bulid",
+                "-lssl",
+                "-lcrypto",
+                "-Wl,-rpath,${workspaceFolder}"
+                //"-Wl,-rpath,/root/git_repositories/OpenSSL-Compatibility-Layer/bulid"
+                //"-DENABLE_SM4_ECB"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}

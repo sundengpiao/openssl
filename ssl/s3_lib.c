@@ -114,6 +114,24 @@ static SSL_CIPHER tls13_ciphers[] = {
         64, /* CCM8 uses a short tag, so we have a low security strength */
         128,
     },
+    //add by sdp 20240912
+     {
+        1,
+        TLS1_3_RFC_SM4_CCM_SM3,
+        TLS1_3_RFC_SM4_CCM_SM3,
+        TLS1_3_CK_SM4_CCM_SM3,
+        SSL_kANY,
+        SSL_aANY,
+        SSL_SM4CCM,
+        SSL_AEAD,
+        TLS1_3_VERSION, TLS1_3_VERSION,
+        0, 0,
+        SSL_HIGH,
+        SSL_HANDSHAKE_MAC_SM3,
+        128,
+        128,
+    },
+
 #ifndef OPENSSL_NO_INTEGRITY_ONLY_CIPHERS
     {
         1,
@@ -1313,6 +1331,24 @@ static SSL_CIPHER ssl3_ciphers[] = {
      SSL_HANDSHAKE_MAC_SHA384 | TLS1_PRF_SHA384,
      256,
      256,
+     },
+     //add by sdp 20240914
+    {
+     1,
+     TLS1_TXT_SM2_WITH_SM4_CCM_SM3,
+     TLS1_RFC_SM2_WITH_SM4_CCM_SM3,
+     TLS1_CK_SM2_WITH_SM4_CCM_SM3,
+     //TODO SSL_aSM2，暂未测试SM2认证
+     SSL_kANY,
+     SSL_aANY,
+     SSL_SM4CCM,
+     SSL_AEAD,
+     TLS1_2_VERSION, TLS1_2_VERSION,
+     DTLS1_2_VERSION, DTLS1_2_VERSION,
+     SSL_NOT_DEFAULT | SSL_MEDIUM,
+     SSL_HANDSHAKE_MAC_SM3,
+     128, /* CCM8 uses a short tag, so we have a low security strength */
+     128,
      },
 #ifndef OPENSSL_NO_INTEGRITY_ONLY_CIPHERS
     {

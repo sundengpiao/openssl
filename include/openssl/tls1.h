@@ -625,6 +625,8 @@ int SSL_CTX_set_tlsext_ticket_key_evp_cb
 # define TLS1_3_CK_CHACHA20_POLY1305_SHA256               0x03001303
 # define TLS1_3_CK_AES_128_CCM_SHA256                     0x03001304
 # define TLS1_3_CK_AES_128_CCM_8_SHA256                   0x03001305
+//add by sdp 20240912
+# define TLS1_3_CK_SM4_CCM_SM3                            0x03001306
 
 /* Integrity-only ciphersuites from RFC 9150 */
 # define TLS1_3_CK_SHA256_SHA256                          0x0300C0B4
@@ -657,6 +659,9 @@ int SSL_CTX_set_tlsext_ticket_key_evp_cb
 # define TLS1_CK_DHE_PSK_WITH_ARIA_256_GCM_SHA384         0x0300C06D
 # define TLS1_CK_RSA_PSK_WITH_ARIA_128_GCM_SHA256         0x0300C06E
 # define TLS1_CK_RSA_PSK_WITH_ARIA_256_GCM_SHA384         0x0300C06F
+
+//add by sdp 20240914
+# define TLS1_CK_SM2_WITH_SM4_CCM_SM3                     0x0300C071
 
 /* a bundle of RFC standard cipher names, generated from ssl3_ciphers[] */
 # define TLS1_RFC_RSA_WITH_AES_128_SHA                   "TLS_RSA_WITH_AES_128_CBC_SHA"
@@ -706,6 +711,10 @@ int SSL_CTX_set_tlsext_ticket_key_evp_cb
 # define TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_CCM_8         "TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8"
 # define TLS1_3_RFC_AES_128_GCM_SHA256                   "TLS_AES_128_GCM_SHA256"
 # define TLS1_3_RFC_AES_256_GCM_SHA384                   "TLS_AES_256_GCM_SHA384"
+
+//add by sdp 20240912
+# define TLS1_3_RFC_SM4_CCM_SM3                          "TLS_SM4_CCM_SM3"
+
 # define TLS1_3_RFC_CHACHA20_POLY1305_SHA256             "TLS_CHACHA20_POLY1305_SHA256"
 # define TLS1_3_RFC_SHA256_SHA256                        "TLS_SHA256_SHA256"
 # define TLS1_3_RFC_SHA384_SHA384                        "TLS_SHA384_SHA384"
@@ -731,6 +740,9 @@ int SSL_CTX_set_tlsext_ticket_key_evp_cb
 # define TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
 # define TLS1_RFC_ECDHE_RSA_WITH_AES_128_GCM_SHA256      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
 # define TLS1_RFC_ECDHE_RSA_WITH_AES_256_GCM_SHA384      "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+//add by sdp 20240914   
+# define TLS1_RFC_SM2_WITH_SM4_CCM_SM3                   "TLS_SM2_WITH_SM4_CCM_SM3"
+
 # define TLS1_RFC_PSK_WITH_NULL_SHA                      "TLS_PSK_WITH_NULL_SHA"
 # define TLS1_RFC_DHE_PSK_WITH_NULL_SHA                  "TLS_DHE_PSK_WITH_NULL_SHA"
 # define TLS1_RFC_RSA_PSK_WITH_NULL_SHA                  "TLS_RSA_PSK_WITH_NULL_SHA"
@@ -1081,6 +1093,8 @@ int SSL_CTX_set_tlsext_ticket_key_evp_cb
 # define TLS1_TXT_ECDHE_RSA_WITH_AES_256_GCM_SHA384      "ECDHE-RSA-AES256-GCM-SHA384"
 # define TLS1_TXT_ECDH_RSA_WITH_AES_128_GCM_SHA256       "ECDH-RSA-AES128-GCM-SHA256"
 # define TLS1_TXT_ECDH_RSA_WITH_AES_256_GCM_SHA384       "ECDH-RSA-AES256-GCM-SHA384"
+//add by sdp 20240914
+# define TLS1_TXT_SM2_WITH_SM4_CCM_SM3                   "SM2-SM4-CCM-SM3"
 
 /* TLS v1.2 PSK GCM ciphersuites from RFC5487 */
 # define TLS1_TXT_PSK_WITH_AES_128_GCM_SHA256            "PSK-AES128-GCM-SHA256"

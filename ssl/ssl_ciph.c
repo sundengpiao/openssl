@@ -54,8 +54,11 @@ static const ssl_cipher_table ssl_cipher_table_cipher[SSL_ENC_NUM_IDX] = {
     {SSL_CHACHA20POLY1305, NID_chacha20_poly1305}, /* SSL_ENC_CHACHA_IDX 19 */
     {SSL_ARIA128GCM, NID_aria_128_gcm}, /* SSL_ENC_ARIA128GCM_IDX 20 */
     {SSL_ARIA256GCM, NID_aria_256_gcm}, /* SSL_ENC_ARIA256GCM_IDX 21 */
-    {SSL_MAGMA, NID_magma_ctr_acpkm}, /* SSL_ENC_MAGMA_IDX */
-    {SSL_KUZNYECHIK, NID_kuznyechik_ctr_acpkm}, /* SSL_ENC_KUZNYECHIK_IDX */
+    {SSL_MAGMA, NID_magma_ctr_acpkm}, /* SSL_ENC_MAGMA_IDX 22*/
+    {SSL_KUZNYECHIK, NID_kuznyechik_ctr_acpkm}, /* SSL_ENC_KUZNYECHIK_IDX 23*/
+    //add by sdp 20240912
+    {SSL_SM4CBC, NID_sm4_cbc}, /* SSL_ENC_SM4CBC_IDX 24*/
+    {SSL_SM4CCM, NID_sm4_ccm}, /* SSL_ENC_SM4CCM_IDX 25*/
 };
 
 /* NB: make sure indices in this table matches values above */
@@ -72,8 +75,10 @@ static const ssl_cipher_table ssl_cipher_table_mac[SSL_MD_NUM_IDX] = {
     {0, NID_md5_sha1},          /* SSL_MD_MD5_SHA1_IDX 9 */
     {0, NID_sha224},            /* SSL_MD_SHA224_IDX 10 */
     {0, NID_sha512},            /* SSL_MD_SHA512_IDX 11 */
-    {SSL_MAGMAOMAC, NID_magma_mac}, /* sSL_MD_MAGMAOMAC_IDX */
-    {SSL_KUZNYECHIKOMAC, NID_kuznyechik_mac} /* SSL_MD_KUZNYECHIKOMAC_IDX */
+    {SSL_MAGMAOMAC, NID_magma_mac}, /* SSL_MD_MAGMAOMAC_IDX 12*/
+    {SSL_KUZNYECHIKOMAC, NID_kuznyechik_mac}, /* SSL_MD_KUZNYECHIKOMAC_IDX 13*/
+    //add by sdp 20240912
+    {SSL_SM3, NID_sm3}, /* SSL_MD_SM3_IDX 14*/
 };
 
 /* *INDENT-OFF* */
@@ -100,7 +105,9 @@ static const ssl_cipher_table ssl_cipher_table_auth[] = {
     {SSL_aGOST12, NID_auth_gost12},
     {SSL_aSRP,    NID_auth_srp},
     {SSL_aNULL,   NID_auth_null},
-    {SSL_aANY,    NID_auth_any}
+    {SSL_aANY,    NID_auth_any},
+    //add by sdp 20240914 未实现NID_auth_sm2,未测试NID_sm2
+    {SSL_aSM2,    NID_sm2},
 };
 /* *INDENT-ON* */
 
@@ -132,7 +139,9 @@ static const int default_mac_pkey_id[SSL_MD_NUM_IDX] = {
     /* GOST2012_512 */
     EVP_PKEY_HMAC,
     /* MD5/SHA1, SHA224, SHA512, MAGMAOMAC, KUZNYECHIKOMAC */
-    NID_undef, NID_undef, NID_undef, NID_undef, NID_undef
+    NID_undef, NID_undef, NID_undef, NID_undef, NID_undef,
+    //add by sdp 20240920 sm3 EVP_PKEY_HMAC?
+    EVP_PKEY_HMAC
 };
 
 #define CIPHER_ADD      1
@@ -2245,7 +2254,9 @@ const char *OSSL_default_cipher_list(void)
  */
 const char *OSSL_default_ciphersuites(void)
 {
-    return "TLS_AES_256_GCM_SHA384:"
+    return "SM2-SM4-CCM-SM3:"
+           "TLS_SM4_CCM_SM3:"
+           "TLS_AES_256_GCM_SHA384:"
            "TLS_CHACHA20_POLY1305_SHA256:"
            "TLS_AES_128_GCM_SHA256";
 }

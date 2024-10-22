@@ -451,6 +451,10 @@ static const ssl_trace_tbl ssl_ciphers_tbl[] = {
     {0xC100, "GOST2012-KUZNYECHIK-KUZNYECHIKOMAC"},
     {0xC101, "GOST2012-MAGMA-MAGMAOMAC"},
     {0xC102, "GOST2012-GOST8912-IANA"},
+    //sdp by add 20240912
+    {0xC103, "TLS_SM4_CCM_SM3"},
+    //add by sdp 20240914
+    {0xC104, "TLS_SM2_WITH_SM4_CCM_SM3"},
 };
 
 /* Compression methods */
